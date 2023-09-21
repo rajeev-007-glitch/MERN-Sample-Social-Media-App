@@ -1,3 +1,4 @@
+import {} from "dotenv/config"
 import express from "express"
 import bodyParser from "body-parser"
 import mongoose from "mongoose"
@@ -13,12 +14,10 @@ app.use(cors())
 
 app.use("/posts", postRoutes)
 
-const CONNECTION_URL =
-  "mongodb+srv://jadonrajeevsingh237:MongoDb@cluster0.zsfe3jm.mongodb.net/"
 const PORT = process.env.PORT || 5000
 
 mongoose
-  .connect("mongodb://mongo-db/MERN-Sample-Social-Media-App", {
+  .connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
